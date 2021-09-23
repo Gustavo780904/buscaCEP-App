@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList} from 'react-native';
 import axios from 'axios';
+import {TextInputMask} from 'react-native-masked-text';
 
 const FormularioCep = ({navigation}) => {
 
@@ -14,19 +15,24 @@ const FormularioCep = ({navigation}) => {
                 setData(addr)
             })
             .catch((err) => {
-                console.error("ops! ocorreu um erro" + err);
+                Alert("ops! ocorreu um erro" + err);
             });
     }
 
 return (
     <View style={styles.container}>
-        <TextInput style={styles.input}
+        <TextInputMask style={styles.input}
             onChangeText={cep => { this.setCep({ cep }) }}
             value={cep}
             // value={'38440122'}
+            type="zip-code"
             keyboardType='numeric'
             onChangeText={text => setCep(text)}
             placeholder='Digite o CEP'
+            options={{
+                maskType: 'BRL',
+
+            }}
         />
         <TouchableOpacity
             style={styles.button}
@@ -42,8 +48,12 @@ return (
         {/* <FlatList
           data={data}
           numColumns={1}
-          renderItem={() => data.cep}
-          keyExtractor={data => data.cep}
+          keyExtractor={({index}) => index}
+          renderItem={({item}) => (
+              <TextInput
+              placeholder='CEP'
+              value={item.cep}></TextInput>
+          )}
         /> */}
     </View>
 )
@@ -59,7 +69,8 @@ const styles = StyleSheet.create({
     input: {
         borderWidth: 0.5,
         borderColor: '#2009f3',
-        paddingHorizontal: 15,
+        paddingHorizontal: 10,
+        textAlign: 'center',
         paddingVertical: 10,
         fontSize: 20,
         backgroundColor: '#ddd',
@@ -73,7 +84,7 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     textButton: {
-        color: '#a4a4a5',
+        color: '#ddd',
         fontSize: 20
     }
 })

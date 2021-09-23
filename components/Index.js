@@ -1,37 +1,49 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, Button, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Index = ({ navigation }) => {
     return (
-        <View>
-            <Text>teste</Text>
+        <LinearGradient
+            colors={['#1100fd', '#fdc200']}
+            style={styles.buttonContainer}
+        >
+            {/* <Text>teste</Text> */}
             <TouchableOpacity>
-                <View style={styles.buttonContainer}>
-                    <Button
-                        color="#fdc200"
-                        title="Busca por CEP"
-                        onPress={() => navigation.navigate('FormularioCep')}
-                    />
-                    </View>
-                    <View style={styles.buttonContainer}>
-                    <Button
-
-                        color="#1100fd"
-                        title="Busca por Endereço"
-                        onPress={() => navigation.navigate('FormularioRua')}
-                    />
-                </View>
+                <Button
+                style = {styles.button}
+                    color="#fdc200"
+                    title="Busca por CEP"
+                    onPress={() => navigation.navigate('FormularioCep')}
+                />
             </TouchableOpacity>
-        </View>
+            <TouchableOpacity>
+                <Button
+
+                    color="#1100fd"
+                    title="Busca por Endereço"
+                    onPress={() => navigation.navigate('FormularioRua')}
+                />
+            </TouchableOpacity>
+        </LinearGradient>
     )
 }
 
 const styles = StyleSheet.create({
- 
+
     buttonContainer: {
-        marginHorizontal: 90,
-        marginVertical: 10
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        alignContent: 'center',
+    },
+    button:{
+        margin:40,
+        color: 'black',
+        paddingVertical: 'auto'
     }
+
 })
 
 export default Index;

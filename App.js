@@ -17,8 +17,8 @@ const App = () => {
       <Text>teste</Text>
       <Stack.Navigator>
         <Stack.Screen name="Index" component={Index} options={{ title: 'BuscaCEP' }} />
-        <Stack.Screen name="FormularioRua" component={FormularioRua} options={{ title: 'Busca por CEP' }} />
-        <Stack.Screen name="FormularioCep" component={FormularioCep} options={{ title: 'Busca por endereço' }} />
+        <Stack.Screen name="FormularioRua" component={FormularioRua} options={{ title: 'Busca por endereço' }} />
+        <Stack.Screen name="FormularioCep" component={FormularioCep} options={{ title: 'Busca por CEP' }} />
         <Stack.Screen name="ResultadoCep" component={ResultadoCep} options={{ title: 'Resultado da busca por CEP' }} />
       </Stack.Navigator>
     </NavigationContainer>
