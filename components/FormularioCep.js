@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList} from 'react-native';
 import axios from 'axios';
 
-const FormularioCep = () => {
+const FormularioCep = ({navigation}) => {
 
     const [cep, setCep] = useState("");
     const [data, setData] = useState([]);
@@ -23,19 +23,28 @@ return (
         <TextInput style={styles.input}
             onChangeText={cep => { this.setCep({ cep }) }}
             value={cep}
+            // value={'38440122'}
             keyboardType='numeric'
             onChangeText={text => setCep(text)}
             placeholder='Digite o CEP'
         />
         <TouchableOpacity
             style={styles.button}
-            onPress={() => { getData(cep, []) }}
+            onPress={() => { getData(cep, [])}}
+            // onPress={() => { getData(cep, []), navigation.navigate('ResultadoCep', data ) }}
+        // useEffect???
         >
 
             <Text style={styles.textButton}>Buscar endereço</Text>
         </TouchableOpacity>
-        <Text>{cep}</Text>
-        <Text>{JSON.stringify(data)}</Text>
+        {/* <Text>{cep}</Text> */}
+        <Text>{data}</Text>
+        {/* <FlatList
+          data={data}
+          numColumns={1}
+          renderItem={() => data.cep}
+          keyExtractor={data => data.cep}
+        /> */}
     </View>
 )
 }
