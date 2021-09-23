@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, Button, StyleSheet } from 'react-native';
 
-const Sacola = ({ navigation }) => {
+const Index = ({ navigation }) => {
     return (
         <View>
             <Text>teste</Text>
@@ -15,7 +15,7 @@ const Sacola = ({ navigation }) => {
                     </View>
                     <View style={styles.buttonContainer}>
                     <Button
-                    
+
                         color="#1100fd"
                         title="Busca por Endereço"
                         onPress={() => navigation.navigate('FormularioRua')}
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Sacola;
+export default Index;
