@@ -5,25 +5,23 @@ import { LinearGradient } from 'expo-linear-gradient';
 const Index = ({ navigation }) => {
     return (
         <LinearGradient
-            colors={['#1100fd', '#fdc200']}
+            colors={['#32298b', '#fdc200']}
             style={styles.buttonContainer}
         >
             {/* <Text>teste</Text> */}
-            <TouchableOpacity>
-                <Button
-                style = {styles.button}
-                    color="#fdc200"
-                    title="Busca por CEP"
-                    onPress={() => navigation.navigate('FormularioCep')}
-                />
+            <TouchableOpacity
+                style={styles.button1}
+                onPress={() => navigation.navigate('FormularioCep')}
+            >
+                <Text style={styles.textButton1}>Busca por CEP</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-                <Button
-
-                    color="#1100fd"
-                    title="Busca por Endereço"
-                    onPress={() => navigation.navigate('FormularioRua')}
-                />
+            <TouchableOpacity
+                style={styles.button2}
+                color="#32298b"
+                title="Busca por Endereço"
+                onPress={() => navigation.navigate('FormularioRua')}
+            >
+                <Text style={styles.textButton2}>Busca por Endereço</Text>
             </TouchableOpacity>
         </LinearGradient>
     )
@@ -38,10 +36,38 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
     },
-    button:{
-        margin:40,
-        color: 'black',
-        paddingVertical: 'auto'
+    button1:{
+        backgroundColor: '#fdc200',
+        margin: 40,
+        fontWeight: 'bold',
+        paddingVertical: 15,
+        borderColor: '#ddd',
+        borderRadius: 5,
+        marginBottom: 50,
+        marginTop: 50,
+        width: 200,
+    },
+    button2:{
+        backgroundColor: '#32298b',
+        margin: 40,
+        fontWeight: 'bold',
+        paddingVertical: 15,
+        borderColor: '#ddd',
+        borderRadius: 5,
+        marginBottom: 50,
+        marginTop: 50,
+        width: 200,
+    },
+ 
+    textButton1: {
+        fontSize: 20,
+        textAlign: 'center',
+        color: '#535353',
+    },
+    textButton2: {
+        fontSize: 20,
+        textAlign: 'center',
+        color: '#9e9e9e',
     }
 
 })

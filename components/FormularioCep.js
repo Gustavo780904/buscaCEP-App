@@ -1,23 +1,30 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList, Keyboard } from 'react-native';
 import axios from 'axios';
 import { TextInputMask } from 'react-native-masked-text';
 
 const FormularioCep = ({ navigation }) => {
 
     const [cep, setCep] = useState("");
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({});
 
-    const getData = async (cep, []) => {
+    const getData = async (cep) => {
         axios.get(`https://viacep.com.br/ws/${cep}/json/?callback=?`)
             .then(res => {
                 const addr = res.data;
+                console.log(res)
                 setData(addr)
             })
             .catch((err) => {
                 Alert("ops! ocorreu um erro" + err);
             });
     }
+
+    useEffect(() => {
+        if(Object.keys(data).length != 0){
+            navigation.navigate('ResultadoCep', data );
+        }
+      });
 
     return (
         <View style={styles.container}>
@@ -36,15 +43,15 @@ const FormularioCep = ({ navigation }) => {
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => { getData(cep, []) }}
-            // onPress={() => { getData(cep, []), navigation.navigate('ResultadoCep', data ) }}
+                // onPress={() => { getData(cep)}}
+            onPress={() => { getData(cep)}}
             // useEffect???
             >
                 <Text style={styles.textButton}>Buscar endereço</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => { setCep("") }}
+                onPress={() => { setCep(""), setData([])}}
             >
                 <Text style={styles.textButton}>Limpar formulário</Text>
             </TouchableOpacity>
@@ -69,11 +76,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ffc800'
+        backgroundColor: '#ffc400'
     },
     input: {
-        borderWidth: 0.5,
-        borderColor: '#2009f3',
+        borderWidth: 1,
+        borderColor: '#241c66',
         paddingHorizontal: 10,
         textAlign: 'center',
         paddingVertical: 10,
@@ -82,7 +89,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     button: {
-        backgroundColor: '#2009f3',
+        backgroundColor: '#32298b',
         paddingHorizontal: 28,
         paddingVertical: 15,
         borderColor: '#ddd',
