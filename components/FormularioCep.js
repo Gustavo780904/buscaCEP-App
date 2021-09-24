@@ -59,8 +59,9 @@ const FormularioCep = ({ navigation }) => {
                <Text style={styles.textResultado}>CEP: {data.cep}</Text>
                <Text style={styles.textResultado}>Logradouro: {data.logradouro}</Text>
                <Text style={styles.textResultado}>Complemento: {data.complemento}</Text>
-               <Text style={styles.textResultado}>Localidade: {data.localidade}</Text>
                <Text style={styles.textResultado}>Bairro: {data.bairro}</Text>
+               <Text style={styles.textResultado}>Localidade: {data.localidade}</Text>
+               <Text style={styles.textResultado}>UF: {data.uf}</Text>
              </View>   
         </View>
     )
