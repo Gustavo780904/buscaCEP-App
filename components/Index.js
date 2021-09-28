@@ -19,7 +19,8 @@ const Index = ({ navigation }) => {
                 style={styles.button2}
                 color="#32298b"
                 title="Busca por Endereço"
-                onPress={() => navigation.navigate('FormularioRua')}
+                // onPress={() => navigation.navigate('FormularioRua')}
+                onPress={() => alert("Serviço em manutenção! Desculpe-nos pelo transtorno, estamos trabalhando para melhorar o serviço de busca de endereços.")}
             >
                 <Text style={styles.textButton2}>Busca por Endereço</Text>
             </TouchableOpacity>
