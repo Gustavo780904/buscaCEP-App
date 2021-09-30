@@ -19,21 +19,12 @@ const FormularioCep = ({ navigation }) => {
                 Alert.alert = ("Ops! Ocorreu um erro!" + err);
             });
     }
-    // console.log(data)
-    // useEffect(() => {
-
-    //   setCep(cep)
-            
-    //     }
-    // )
 
     return (
         <>
         <View style={styles.container}>
             <TextInputMask style={styles.input}
-                
                 value={cep}
-                // value={'38440122'}
                 type="zip-code"
                 keyboardType='numeric'
                 onChangeText={text => setCep(text)}
@@ -42,7 +33,6 @@ const FormularioCep = ({ navigation }) => {
                     maskType: 'BRL',
                 }}
             />
-            {/* <Text>{cep}</Text> */}
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => { getData(cep), console.log(cep) }}
@@ -55,8 +45,6 @@ const FormularioCep = ({ navigation }) => {
             >
                 <Text style={styles.textButton}>Limpar formulário</Text>
             </TouchableOpacity>
-            
-         
         </View>
         </>
     )
