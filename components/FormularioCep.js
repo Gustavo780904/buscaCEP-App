@@ -8,32 +8,24 @@ const FormularioCep = ({ navigation }) => {
     const [cep, setCep] = useState("");
     const [data, setData] = useState({});
 
-    const getData = async (cep) => {
-        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
-            .then(res => {
-                const addr = res.data;
-                setData(addr)
-                console.log(data.logradouro)
-              if(data === undefined) {
-                alert("Aguarde")
-
-            }else{
-                console.log(data)
-                navigation.navigate('ResultadoCep', data);
-              }
-
+    const getData = (cep) => {
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(res => res.json())
+            .then((json) => {
+                navigation.navigate('ResultadoCep', json)
+                console.log(json)
             })
             .catch((err) => {
-                Alert.alert = ("ops! ocorreu um erro" + err);
+                Alert.alert = ("Ops! Ocorreu um erro!" + err);
             });
     }
     // console.log(data)
-    useEffect(() => {
+    // useEffect(() => {
 
-      setCep(cep)
+    //   setCep(cep)
             
-        }
-    )
+    //     }
+    // )
 
     return (
         <>
@@ -50,9 +42,10 @@ const FormularioCep = ({ navigation }) => {
                     maskType: 'BRL',
                 }}
             />
+            {/* <Text>{cep}</Text> */}
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => { getData(cep) }}
+                onPress={() => { getData(cep), console.log(cep) }}
             >
                 <Text style={styles.textButton}>Buscar endereço</Text>
             </TouchableOpacity>
